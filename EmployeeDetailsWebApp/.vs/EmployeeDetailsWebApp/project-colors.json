@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "fd3f8227-259a-465b-a778-eba3938f1e90": {
+      "ProjectGuid": "fd3f8227-259a-465b-a778-eba3938f1e90",
+      "DisplayName": "EmployeeDetailsWebApp",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
