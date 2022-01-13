@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import { variables } from '../Variables';
+import swal from 'sweetalert2';
+
 
 export class Department extends Component{
 
@@ -19,7 +21,7 @@ export class Department extends Component{
 
 
 
-
+    //get date
     refreshList(){
         fetch(variables.API_URL+'department')
         .then(response=>response.json())
@@ -51,6 +53,9 @@ export class Department extends Component{
         });
     }
 
+
+     //insert data
+
     createClick(){
         fetch(variables.API_URL+'department',{
             method:'POST',
@@ -64,14 +69,16 @@ export class Department extends Component{
         })
         .then(res=>res.json())
         .then((result)=>{
-            alert(result);
+            //alert(result);
+            swal.fire("inserted", "insert Successfully !!", "success");
             this.refreshList();
         },(error)=>{
-            alert('Failed');
+            //alert('Failed');
+            swal.fire("Failed", "Failed !!", "warning");
         })
     }
 
-
+ //update data
     updateClick(){
         fetch(variables.API_URL+'department',{
             method:'PUT',
@@ -86,12 +93,17 @@ export class Department extends Component{
         })
         .then(res=>res.json())
         .then((result)=>{
-            alert(result);
+            //alert(result);
+            swal.fire("Updated", "update Successfully !!", "success");
+           
             this.refreshList();
         },(error)=>{
-            alert('Failed');
+            //alert('Failed');
+            swal.fire("Failed", "Failed !!", "warning");
         })
     }
+
+    //delete data
 
     deleteClick(id){
         if(window.confirm('Are you sure?')){
@@ -104,10 +116,12 @@ export class Department extends Component{
         })
         .then(res=>res.json())
         .then((result)=>{
-            alert(result);
+           // alert(result);
+            swal.fire("Deleted", "Delete Successfully !!", "success");
             this.refreshList();
         },(error)=>{
-            alert('Failed');
+            //alert('Failed');
+            swal.fire("Failed", "Failed!!", "warning");
         })
         }
     }
@@ -129,7 +143,7 @@ export class Department extends Component{
         return(
             <div>
                   <button type="button"
-                    className="btn btn-primary m-2 float-end"
+                    className="btn btn-success m-2 float-end"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
                     onClick={()=>this.addClick()}>
@@ -170,7 +184,7 @@ export class Department extends Component{
                 <td>{dep.DepartmentName}</td>
                 <td>
                 <button type="button"
-                className="btn btn-light mr-1"
+                className="btn btn-warning mr-1"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
                 onClick={()=>this.editClick(dep)}>
@@ -179,9 +193,9 @@ export class Department extends Component{
                     <path fillRule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                     </svg>
                 </button>
-                
+
                 <button type="button"
-                className="btn btn-light mr-1"
+                className="btn btn-danger mr-1"
                 onClick={()=>this.deleteClick(dep.DepartmentId)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
                     <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
@@ -205,7 +219,7 @@ export class Department extends Component{
 
    <div className="modal-body">
        <div className="input-group mb-3">
-        <span className="input-group-text">DepartmentName</span>
+        <span className="input-group-text">Department Name</span>
         <input type="text" className="form-control"
         value={DepartmentName}
         onChange={this.changeDepartmentName}/>

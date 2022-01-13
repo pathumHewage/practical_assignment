@@ -1,8 +1,8 @@
-import './App.css';
-import {Home} from './components/Home';
+
 import {Employee} from './components/Employee';
 import { Department } from './components/Department';
 import { BrowserRouter,Route,Routes,NavLink} from 'react-router-dom';
+
 
 function App() {
   return (
@@ -10,23 +10,19 @@ function App() {
 
     <div className="App container">
       <h3 className="d-flex justify-content-center m-3">
-        React JS Frontend
+        Employee Details Mangement System
       </h3>
         
-      <nav className="navbar navbar-expand-sm bg-light navbar-dark">
+      <nav className="navbar navbar-expand-sm bg-secondary navbar-dark">
         <ul className="navbar-nav">
+         
           <li className="nav-item- m-1">
-            <NavLink className="btn btn-light btn-outline-primary" to="/home">
-              Home
-            </NavLink>
-          </li>
-          <li className="nav-item- m-1">
-            <NavLink className="btn btn-light btn-outline-primary" to="/department">
+            <NavLink className="btn btn-info btn btn-outline-secondary" to="/department">
               Department
             </NavLink>
           </li>
           <li className="nav-item- m-1">
-            <NavLink className="btn btn-light btn-outline-primary" to="/employee">
+            <NavLink className="btn btn-info btn btn-outline-secondary" to="/employee">
               Employee
             </NavLink>
           </li>
@@ -37,7 +33,7 @@ function App() {
 
     <Routes>
 
-    <Route path="/home" element={<Home/>} />
+    
     <Route path="/employee" element={<Employee/>} />
     <Route path="/department" element={<Department/>} />
    
